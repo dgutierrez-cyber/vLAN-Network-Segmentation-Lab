@@ -1,19 +1,19 @@
 
-# 🧱 VLAN Network Segmentation Lab (VirtualBox Edition)  
+# VLAN Network Segmentation Lab (VirtualBox Edition)  
 **Goal:** Simulate a segmented enterprise network using Oracle VirtualBox  
 **Focus Areas:** Network Isolation · Subnet Mapping · Firewall Policy  
-**📸 Screenshots:** [`/screenshots`](./screenshots)  
+** Screenshots:** [`/screenshots`](./screenshots)  
 **🧠 Skills:** Windows Server · Ubuntu · Kali Linux · VirtualBox · Network Troubleshooting  
 
 ---
 
-## 🧾 1. Purpose  
+## 1. Purpose  
 This lab demonstrates how to design and deploy a segmented enterprise network using **Oracle VirtualBox**.  
 It focuses on **VLAN creation**, **inter-VLAN routing**, and **firewall isolation** to emulate a secure multi-tier enterprise environment.
 
 ---
 
-## 🧩 2. Scope  
+## 2. Scope  
 This SOP applies to local lab environments using **VirtualBox** on Windows or Linux hosts.  
 It includes configuration of:
 - A **Windows Server 2022** VM (Domain Controller / Router)
@@ -23,7 +23,7 @@ It includes configuration of:
 
 ---
 
-## ⚙️ 3. Tools & Resources  
+## 3. Tools & Resources  
 | Category | Tools / Systems |
 |-----------|----------------|
 | Virtualization | Oracle VirtualBox |
@@ -34,7 +34,7 @@ It includes configuration of:
 
 ---
 
-## 🗺️ 4. Lab Network Design  
+## 4. Lab Network Design  
 
 | VLAN | Subnet | Purpose | Example Host | Description |
 |------|---------|----------|---------------|--------------|
@@ -47,7 +47,7 @@ It includes configuration of:
 
 ---
 
-## 🪜 5. Procedure  
+## 5. Procedure  
 
 ### **Step 1 – Environment Setup**
 1. Install **Oracle VirtualBox** and **VirtualBox Extension Pack**  
@@ -155,7 +155,7 @@ ip addr show > network_config.txt
 
 ---
 
-📊 6. Results & Takeaways
+6. Results & Takeaways
 
 ✅ Built a multi-VLAN virtual lab using Oracle VirtualBox
 ✅ Configured firewall rules and routing to enforce segmentation
@@ -165,7 +165,7 @@ ip addr show > network_config.txt
 
 ---
 
-📚 7. References
+7. References
 
 Oracle VirtualBox Networking Guide
 
@@ -181,7 +181,7 @@ NIST SP 800-41 Rev. 1 – Guidelines on Firewalls and Firewall Policy
 
 ---
 
-🗂️ Repo Structure Example
+Repo Structure Example
 
 vLAN-Network-Segmentation-VirtualBox/
 │
