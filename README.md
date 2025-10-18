@@ -1,154 +1,136 @@
-Project: vLAN Network Segmentation Lab
 
-Objective: Simulate an enterprise-grade segmented network in Hyper-V for security testing, traffic isolation, and policy enforcement validation.
-
-
----
-
-1. Purpose
-
-This SOP outlines the steps to design, deploy, and validate a segmented virtual network using Hyper-V, demonstrating the principles of network isolation, firewall enforcement, and inter-VLAN communication control. The goal is to showcase practical skills in virtualized enterprise network architecture.
-
+# 🧱 VLAN Network Segmentation Lab (VirtualBox Edition)  
+**Goal:** Simulate a segmented enterprise network using Oracle VirtualBox  
+**Focus Areas:** Network Isolation · Subnet Mapping · Firewall Policy  
+**📸 Screenshots:** [`/screenshots`](./screenshots)  
+**🧠 Skills:** Windows Server · Ubuntu · Kali Linux · VirtualBox · Network Troubleshooting  
 
 ---
 
-2. Scope
-
-This procedure applies to local lab environments running Windows 11/10 Pro with Hyper-V enabled. It includes configuration of Windows Server (as a Domain Controller/Router), Ubuntu (as a client system), and firewall rules to enforce network segmentation.
-
-
----
-
-3. Tools & Resources
-
-Virtualization Platform: Hyper-V
-
-Operating Systems:
-
-Windows Server 2022 (Core / GUI)
-
-Ubuntu 22.04 LTS
-
-
-Network Tools: PowerShell, ipconfig, ping, tracert, nmap, ufw, Windows Firewall
-
-Documentation: screenshots stored under screenshots/
-
-Skills Demonstrated: Network configuration, VLAN mapping, access control, troubleshooting
-
-
+## 🧾 1. Purpose  
+This lab demonstrates how to design and deploy a segmented enterprise network using **Oracle VirtualBox**.  
+It focuses on **VLAN creation**, **inter-VLAN routing**, and **firewall isolation** to emulate a secure multi-tier enterprise environment.
 
 ---
 
-4. Lab Network Design
-
-VLAN	Subnet	Purpose	Example Host	Description
-
-VLAN 10	192.168.10.0/24	Management	Win-DC	Domain Controller / Router
-VLAN 20	192.168.20.0/24	Workstations	Ubuntu-Client	Internal User Network
-VLAN 30	192.168.30.0/24	Servers	Web-Server	Isolated Service Network
-
-
+## 🧩 2. Scope  
+This SOP applies to local lab environments using **VirtualBox** on Windows or Linux hosts.  
+It includes configuration of:
+- A **Windows Server 2022** VM (Domain Controller / Router)
+- An **Ubuntu 22.04** Client VM
+- A **Kali Linux** VM for penetration testing and validation
+- An optional **Web Server** VM to represent a segmented service zone
 
 ---
 
-5. Procedure
-
-Step 1 – Environment Setup
-
-1. Enable Hyper-V on Windows via “Turn Windows Features On/Off”.
-
-
-2. Create a Virtual Switch for internal lab traffic (type: Internal).
-
-
-3. Create three VMs:
-
-Win-DC – Windows Server (2 cores, 4 GB RAM)
-
-Ubuntu-Client – Ubuntu Desktop (2 cores, 2 GB RAM)
-
-Web-Server – Windows Server / Ubuntu Server (optional)
-
-
-
-
+## ⚙️ 3. Tools & Resources  
+| Category | Tools / Systems |
+|-----------|----------------|
+| Virtualization | Oracle VirtualBox |
+| Operating Systems | Windows Server 2022, Ubuntu 22.04 LTS, Kali Linux 2024.x |
+| Network Utilities | PowerShell, `ipconfig`, `ping`, `tracert`, `nmap`, `ufw`, `iptables` |
+| Documentation | Screenshots stored under `/screenshots` |
+| Concepts | VLAN segmentation, subnet mapping, access control, routing, testing isolation |
 
 ---
 
-Step 2 – VLAN & Subnet Configuration
+## 🗺️ 4. Lab Network Design  
 
-1. Assign static IPs per VLAN:
+| VLAN | Subnet | Purpose | Example Host | Description |
+|------|---------|----------|---------------|--------------|
+| VLAN 10 | 192.168.10.0/24 | Management | Win-DC | Domain Controller / Router |
+| VLAN 20 | 192.168.20.0/24 | Workstations | Ubuntu-Client | User Network |
+| VLAN 30 | 192.168.30.0/24 | Servers | Web-Server | Service Network |
+| VLAN 40 | 192.168.40.0/24 | Security | Kali-Pentest | Penetration Testing & Validation |
 
-Win-DC: 192.168.10.10
+📸 *Screenshot Placeholder:* `screenshots/network_map.png`
 
-Ubuntu-Client: 192.168.20.10
+---
 
-Web-Server: 192.168.30.10
+## 🪜 5. Procedure  
+
+### **Step 1 – Environment Setup**
+1. Install **Oracle VirtualBox** and **VirtualBox Extension Pack**  
+2. Create **four VMs:**
+   - `Win-DC` – Windows Server 2022, 2 vCPU, 4 GB RAM  
+   - `Ubuntu-Client` – Ubuntu 22.04, 2 vCPU, 2 GB RAM  
+   - `Kali-Pentest` – Kali Linux, 2 vCPU, 2 GB RAM  
+   - *(Optional)* `Web-Server` – Ubuntu Server or Windows Server
+3. Create **four Host-Only Networks** via **File → Host Network Manager**, assigning IP ranges for each VLAN.  
+4. Attach each VM NIC to its respective Host-Only Adapter.
+
+📸 *Screenshot Placeholder:* `screenshots/virtualbox_networks.png`
+
+---
+
+### **Step 2 – VLAN & Subnet Configuration**
+1. Assign static IPs to each VM:  
+   ```bash
+   Win-DC:       192.168.10.10 /24
+   Ubuntu-Client:192.168.20.10 /24
+   Web-Server:   192.168.30.10 /24
+   Kali-Pentest: 192.168.40.10 /24
+
+2. On Win-DC, enable Routing and Remote Access (RRAS) or use Static Routes for inter-VLAN connectivity.
+
+
+3. Confirm routing tables with:
+
+route print
 
 
 
-2. Configure each VM NIC to the corresponding VLAN ID using Hyper-V Virtual Switch Manager → Advanced Features.
-
-
-3. On Win-DC, enable Routing and Remote Access (RRAS) for inter-VLAN routing.
-
-
+📸 Screenshot Placeholder: screenshots/ipconfig_settings.png
 
 
 ---
 
 Step 3 – Firewall Policy & Isolation
 
-1. On Win-DC, configure Inbound/Outbound Rules:
+Windows Server (Win-DC):
 
-Block traffic between VLAN 20 ↔ VLAN 30
+# Block VLAN 20 ↔ VLAN 30
+New-NetFirewallRule -DisplayName "Block_VLAN20_30" -Direction Inbound -Action Block -RemoteAddress 192.168.30.0/24
+New-NetFirewallRule -DisplayName "Block_VLAN30_20" -Direction Inbound -Action Block -RemoteAddress 192.168.20.0/24
 
-Allow Management VLAN 10 access to all
+# Allow management VLAN full access
+New-NetFirewallRule -DisplayName "Allow_VLAN10_All" -Direction Inbound -Action Allow -RemoteAddress 192.168.10.0/24
 
-
-
-2. On Ubuntu-Client and Web-Server, configure:
+Ubuntu / Web-Server:
 
 sudo ufw enable
-
 sudo ufw default deny incoming
+sudo ufw allow out 53,80,443/tcp
+sudo ufw allow icmp
 
-Allow only ICMP and DNS outbound
+Kali Linux (testing isolation):
 
+# Verify segmentation with ping and nmap
+ping -c 3 192.168.20.10
+sudo nmap -sn 192.168.30.0/24
 
-
-3. Test connectivity with ping and nmap to confirm isolation.
-
-
+📸 Screenshot Placeholder: screenshots/firewall_rules.png
 
 
 ---
 
 Step 4 – Validation & Troubleshooting
 
-1. Test connectivity:
+Run verification tests:
 
-VLAN 10 ↔ VLAN 20 ✅
+# On Ubuntu client
+ping 192.168.10.10   # ✅ Management VLAN reachable
+ping 192.168.30.10   # ❌ Server VLAN blocked
 
-VLAN 20 ↔ VLAN 30 ❌ (blocked)
+# On Kali (security VLAN)
+sudo nmap -sS 192.168.20.0/24
+sudo traceroute 192.168.30.10
 
+📸 Screenshot Placeholders:
 
+screenshots/ping_tests.png
 
-2. Capture firewall logs and export results.
-
-
-3. Save verification screenshots under screenshots/ folder:
-
-ipconfig / ifconfig output
-
-Hyper-V switch settings
-
-Firewall rule configuration
-
-Successful/failed ping results
-
-
+screenshots/nmap_results.png
 
 
 
@@ -156,37 +138,61 @@ Successful/failed ping results
 
 Step 5 – Documentation
 
-1. Save configuration commands and logs in network_config.txt.
+1. Export network configuration:
+
+ip addr show > network_config.txt
 
 
-2. Store all screenshots under /screenshots/ for GitHub submission.
+2. Save all screenshots under /screenshots/
 
 
-3. Summarize findings and lessons learned:
-
-Importance of VLANs in reducing attack surface
-
-Benefits of defense-in-depth with routing and firewall rules
+3. Summarize test results and observations for each VLAN pairing.
 
 
+
+📸 Screenshot Placeholder: screenshots/results_summary.png
+
+
+---
+
+📊 6. Results & Takeaways
+
+✅ Built a multi-VLAN virtual lab using Oracle VirtualBox
+✅ Configured firewall rules and routing to enforce segmentation
+✅ Used Kali Linux to validate network isolation and test firewall posture
+✅ Demonstrated Windows Server, Ubuntu, and security testing skills in a virtualized environment
+
+
+---
+
+📚 7. References
+
+Oracle VirtualBox Networking Guide
+
+Microsoft Learn – Configure Routing and Remote Access
+
+Ubuntu UFW Documentation
+
+Kali Linux Tools Docs
+
+NIST SP 800-41 Rev. 1 – Guidelines on Firewalls and Firewall Policy
 
 
 
 ---
 
-6. Results & Takeaways
+🗂️ Repo Structure Example
 
-✅ Successfully implemented a three-tier segmented network in Hyper-V.
-✅ Verified network isolation and policy enforcement via firewalls.
-✅ Demonstrated applied knowledge of Windows Server, Ubuntu, and network troubleshooting.
+vLAN-Network-Segmentation-VirtualBox/
+│
+├── README.md
+├── screenshots/
+│   ├── network_map.png
+│   ├── virtualbox_networks.png
+│   ├── ipconfig_settings.png
+│   ├── firewall_rules.png
+│   ├── ping_tests.png
+│   ├── nmap_results.png
+│   └── results_summary.png
+└── network_config.txt
 
-
----
-
-7. References
-
-Microsoft Learn – Configure Hyper-V Networking
-
-Ubuntu Docs – UFW Firewall
-
-NIST SP 800-41 – Guidelines on Firewalls and Firewall Policy
