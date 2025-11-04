@@ -55,7 +55,7 @@ It includes configuration of:
    - `Win-DC` – Windows Server 2022, 2 vCPU, 4 GB RAM  
    - `Ubuntu-Client` – Ubuntu 22.04, 2 vCPU, 2 GB RAM  
    - `Kali-Pentest` – Kali Linux, 2 vCPU, 2 GB RAM  
-   - *(Optional)* `Web-Server` – Ubuntu Server or Windows Server
+   -  `Web-Server` – Ubuntu Server
 3. Create **four Host-Only Networks** via **File → Host Network Manager**, assigning IP ranges for each VLAN.  
 4. Attach each VM NIC to its respective Host-Only Adapter.
 
