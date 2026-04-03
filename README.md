@@ -38,10 +38,10 @@ It includes configuration of:
 
 | VLAN | Subnet | Purpose | Example Host | Description |
 |------|---------|----------|---------------|--------------|
-| VLAN 10 | 192.168.10.0/24 | Management | Win-DC | Domain Controller / Router |
-| VLAN 20 | 192.168.20.0/24 | Workstations | Ubuntu-Client | User Network |
-| VLAN 30 | 192.168.30.0/24 | Servers | Web-Server | Service Network |
-| VLAN 40 | 192.168.40.0/24 | Security | Kali-Pentest | Penetration Testing & Validation |
+| VLAN 1 | 192.168.56.10 | Servers | Windows Server 2022 | Domain Controller / Router |
+| VLAN 2 | 192.168.20.0/24 | Workstations | Ubuntu-Client | User Network |
+| VLAN 3 | 192.168.30.0/24 | Servers | Web-Server | Service Network |
+| VLAN 4 | 192.168.56.30 | Security | Kali-Pentest | Penetration Testing & Validation |
 
 📸 *Screenshot Placeholder:* `screenshots/network_map.png`
 
@@ -52,7 +52,7 @@ It includes configuration of:
 ### **Step 1 – Environment Setup**
 1. Install **Oracle VirtualBox** and **VirtualBox Extension Pack**  
 2. Create **four VMs:**
-   - `Win-DC` – Windows Server 2022, 2 vCPU, 4 GB RAM  
+   - `Windows Server 2022` – Windows Server 2022, 4 vCPU, 8 GB RAM  
    - `Ubuntu-Client` – Ubuntu 22.04, 2 vCPU, 2 GB RAM  
    - `Kali-Pentest` – Kali Linux, 2 vCPU, 2 GB RAM  
    -  `Web-Server` – Ubuntu Server
@@ -66,10 +66,10 @@ It includes configuration of:
 ### **Step 2 – VLAN & Subnet Configuration**
 1. Assign static IPs to each VM:  
    ```bash
-   Win-DC:       192.168.10.10 /24
+   Windows Server 2022:       192.168.56.10
    Ubuntu-Client:192.168.20.10 /24
    Web-Server:   192.168.30.10 /24
-   Kali-Pentest: 192.168.40.10 /24
+   Kali-Pentest: 192.168.56.30
 
 2. On Win-DC, enable Routing and Remote Access (RRAS) or use Static Routes for inter-VLAN connectivity.
 
