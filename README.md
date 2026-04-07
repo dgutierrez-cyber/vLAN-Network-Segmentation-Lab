@@ -1,5 +1,15 @@
 
-# VLAN Network Segmentation Lab (VirtualBox Edition)  
+# <div align="center">VLAN Network Segmentation Lab (VirtualBox Edition)
+</div>
+
+<div align="center">Overview</div>
+
+I chose VirtualBox to simulate a network using virtual machines so I can test out various programs and CLI tasks.
+
+
+
+
+
 **Goal:** Simulate a segmented enterprise network using Oracle VirtualBox  
 **Focus Areas:** Network Isolation · Subnet Mapping · Firewall Policy  
 ** Screenshots:** [`/screenshots`](./screenshots)  
