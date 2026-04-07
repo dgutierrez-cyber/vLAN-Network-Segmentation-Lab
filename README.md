@@ -33,11 +33,11 @@ Ubuntu- 4GB RAM 2CPU
 
 # <div align="center">Lab Network Design</div>
 
-I set static IPs to each VM<brk>
+I set static IPs to each VM\
 -Windows Server 2022- 192.168.56.10\
--Ubuntu- 192.168.56.20
--Kali- 192.168.56.30
--Ubuntu- 192.168.56.40
+-Ubuntu- 192.168.56.20\
+-Kali- 192.168.56.30\
+-Ubuntu- 192.168.56.40\
 
 | VLAN | Subnet | Purpose | Example Host | Description |
 |------|---------|----------|---------------|--------------|
