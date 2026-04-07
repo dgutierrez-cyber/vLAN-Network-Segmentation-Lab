@@ -7,7 +7,13 @@
 I chose VirtualBox to simulate a network using virtual machines so I can test out various programs and CLI tasks.
 
 
+# <div align="center">Lab Environment</div>
 
+Windows Server 2022
+<screenshot placeholder
+Kali Linux 
+
+Ubuntu
 
 
 **Goal:** Simulate a segmented enterprise network using Oracle VirtualBox  
