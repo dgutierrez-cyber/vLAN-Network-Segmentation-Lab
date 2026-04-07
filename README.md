@@ -9,13 +9,22 @@ I chose VirtualBox to simulate a network using virtual machines so I can test ou
 
 # <div align="center">Lab Environment</div>
 
-Windows Server 2022\
+Windows Server 2022- 8GB RAM 4CPU
 >screenshot placeholder
 
 
-Kali Linux 
+Kali Linux- 4GB RAM 2CPU
+>screenshot placeholder
 
-Ubuntu
+Ubuntu- 4GB RAM 2CPU
+>screenshot placeholder
+
+Ubuntu- 4GB RAM 2CPU
+>screenshot placeholder
+
+
+
+
 
 
 **Goal:** Simulate a segmented enterprise network using Oracle VirtualBox  
