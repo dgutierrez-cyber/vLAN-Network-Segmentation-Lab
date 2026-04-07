@@ -9,18 +9,50 @@ I chose VirtualBox to simulate a network using virtual machines so I can test ou
 
 # <div align="center">Lab Environment</div>
 
+I used VirtualBox to create and setup 4 different VM's.
+- A Windows Server 2022 VM (Domain Controller / Router)
+- An Ubuntu 22.04 VM
+- A Kali Linux VM for penetration testing and validation
+- A second Ubuntu 22.04 VM to represent a segmented service zone 
+
+
 Windows Server 2022- 8GB RAM 4CPU
 >screenshot placeholder
 
+Ubuntu- 4GB RAM 2CPU
+>screenshot placeholder
 
 Kali Linux- 4GB RAM 2CPU
 >screenshot placeholder
 
-Ubuntu- 4GB RAM 2CPU
->screenshot placeholder
 
 Ubuntu- 4GB RAM 2CPU
 >screenshot placeholder
+
+
+
+# <div align="center">Lab Network Design</div>
+
+I set static IPs to each VM
+*Windows Server 2022- 192.168.56.10
+*Ubuntu- 192.168.56.20
+*Kali- 192.168.56.30
+*Ubuntu- 192.168.56.40
+
+| VLAN | Subnet | Purpose | Example Host | Description |
+|------|---------|----------|---------------|--------------|
+| VLAN 1 | 192.168.56.10 | Server | Windows Server 2022 | Domain Controller / Router |
+| VLAN 2 | 192.168.56.20 | Workstation | Ubuntu | User Network |
+| VLAN 3 | 192.168.56.30 | Security | Kali-Pentest | Penetration Testing & Validation |
+| VLAN 4 | 192.168.56.40 | Workstation | Ubuntu | User Network |
+
+>network mapping image placeholder
+
+
+
+
+
+
 
 
 
