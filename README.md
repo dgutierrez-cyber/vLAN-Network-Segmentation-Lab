@@ -4,7 +4,8 @@
 
 <div align="center">Overview</div>
 
-I chose VirtualBox to simulate a network using virtual machines so I can test out various programs and CLI tasks.
+This lab demonstrates how to design and deploy a segmented enterprise network using Oracle VirtualBox.
+It focuses on VLAN creation, inter-VLAN routing, and firewall isolation to emulate a secure multi-tier enterprise environment.
 
 
 # <div align="center">Lab Environment</div>
@@ -72,11 +73,11 @@ At this point I sent pings through ICMP to verify connection and communication b
 
 
 
-
-
-
-
-
+\
+\
+\
+\
+\
 
 
 
