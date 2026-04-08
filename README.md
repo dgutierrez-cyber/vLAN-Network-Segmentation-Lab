@@ -42,21 +42,37 @@ I set static IPs to each VM\
 -Windows Server 2022- 192.168.56.10\
 -Ubuntu- 192.168.56.20\
 -Kali- 192.168.56.30\
--Ubuntu- 192.168.56.40\
+-Ubuntu- 192.168.56.40
 
 | VLAN | Subnet | Purpose | Example Host | Description |
 |------|---------|----------|---------------|--------------|
 | VLAN 1 | 192.168.56.10 | Server | Windows Server 2022 | Domain Controller / Router |
-| VLAN 2 | 192.168.56.20 | Workstation | Ubuntu | User Network |
+| VLAN 2 | 192.168.56.20 | Workstation | Ubuntu | Victim |
 | VLAN 3 | 192.168.56.30 | Security | Kali-Pentest | Penetration Testing & Validation |
-| VLAN 4 | 192.168.56.40 | Workstation | Ubuntu | User Network |
-
->network mapping image placeholder
+| VLAN 4 | 192.168.56.40 | Workstation | Ubuntu | Client 2 |
 
 
+All virtual machines are connected to a shared host-only network (192.168.56.0/24), forming a flat network topology. In this configuration, all hosts can freely communicate with one another, simulating a non-segmented environment where lateral movement is possible.
+
+<div align='center'>Network: 192.168.56.0/24 (Host-Only Adapter - vboxnet0)</div>
+
+                [ Host Machine ]
+                 192.168.56.1
+                       │
+        ───────────────┼────────────────
+                       │
+     ┌──────────┬──────────┬──────────┬──────────┐
+     │          │          │          │
+[ Windows ]  [ Ubuntu ]  [ Kali ]  [ Ubuntu ]
+ Server 2022   Victim      Attacker   Client 2
+192.168.56.10 192.168.56.20 192.168.56.30 192.168.56.40
 
 
+At this point I sent pings through ICMP to verify connection and communication between devices, I recieved a return of 100% packet loss and quickly seen my mistake. In my rush I didnt finish inputting the IP Address correctly, once I noticed that I added the last number needed to complete the correct input needed. Once the IP Address was input correctly there was 0% packet loss.
 
+<img width="788" height="503" alt="Human Error Ping (Victim - Client 2)" src="https://github.com/user-attachments/assets/b10ccd66-1757-4cf2-b931-f9f63c73cfed" />
+
+<img width="979" height="569" alt="Human Error Ping (Client 2 - Victim)" src="https://github.com/user-attachments/assets/ad5875f3-314a-472c-9916-82c1eec0c505" />
 
 
 
