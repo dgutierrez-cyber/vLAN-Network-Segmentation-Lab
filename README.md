@@ -56,16 +56,10 @@ All virtual machines are connected to a shared host-only network (192.168.56.0/2
 
 <div align='center'>Network: 192.168.56.0/24 (Host-Only Adapter - vboxnet0)</div>
 
-                [ Host Machine ]
-                 192.168.56.1
-                       │
-        ───────────────┼────────────────
-                       │
-     ┌──────────┬──────────┬──────────┬──────────┐
-     │          │          │          │
-[ Windows ]  [ Ubuntu ]  [ Kali ]  [ Ubuntu ]
- Server 2022   Victim      Attacker   Client 2
-192.168.56.10 192.168.56.20 192.168.56.30 192.168.56.40
+![Network Mapping](https://github.com/user-attachments/assets/ceddae41-13d6-439e-ae67-ff559f3c1927)
+
+  
+
 
 
 At this point I sent pings through ICMP to verify connection and communication between devices, I recieved a return of 100% packet loss and quickly seen my mistake. In my rush I didnt finish inputting the IP Address correctly, once I noticed that I added the last number needed to complete the correct input needed. Once the IP Address was input correctly there was 0% packet loss.
@@ -73,6 +67,24 @@ At this point I sent pings through ICMP to verify connection and communication b
 <img width="788" height="503" alt="Human Error Ping (Victim - Client 2)" src="https://github.com/user-attachments/assets/b10ccd66-1757-4cf2-b931-f9f63c73cfed" />
 
 <img width="979" height="569" alt="Human Error Ping (Client 2 - Victim)" src="https://github.com/user-attachments/assets/ad5875f3-314a-472c-9916-82c1eec0c505" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
