@@ -17,17 +17,22 @@ I used VirtualBox to create and setup 4 different VM's.
 
 
 Windows Server 2022- 8GB RAM 4CPU
->screenshot placeholder
+
+<img width="879" height="263" alt="Windows Server CPU " src="https://github.com/user-attachments/assets/74dac302-a4a9-4dea-93f7-5ea33216fa07" />
 
 Ubuntu- 4GB RAM 2CPU
->screenshot placeholder
+
+<img width="558" height="335" alt="Ubuntu CPU" src="https://github.com/user-attachments/assets/46cd7f9e-9102-4661-83f1-044dbac019c5" />
 
 Kali Linux- 4GB RAM 2CPU
->screenshot placeholder
+
+<img width="704" height="249" alt="Kali CPU" src="https://github.com/user-attachments/assets/36659c88-e17c-435f-aed0-a9da21b9300e" />
 
 
 Ubuntu- 4GB RAM 2CPU
->screenshot placeholder
+
+<img width="581" height="320" alt="Ubuntu#2 CPU" src="https://github.com/user-attachments/assets/8b836f1e-c4ba-4a4d-9de9-078701ce58cd" />
+
 
 
 
