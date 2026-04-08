@@ -93,17 +93,6 @@ At this point I sent pings through ICMP to verify connection and communication b
 
 
 
-**Goal:** Simulate a segmented enterprise network using Oracle VirtualBox  
-**Focus Areas:** Network Isolation · Subnet Mapping · Firewall Policy  
-** Screenshots:** [`/screenshots`](./screenshots)  
-**🧠 Skills:** Windows Server · Ubuntu · Kali Linux · VirtualBox · Network Troubleshooting  
-
----
-
-## 1. Purpose  
-This lab demonstrates how to design and deploy a segmented enterprise network using **Oracle VirtualBox**.  
-It focuses on **VLAN creation**, **inter-VLAN routing**, and **firewall isolation** to emulate a secure multi-tier enterprise environment.
-
 ---
 
 ## 2. Scope  
