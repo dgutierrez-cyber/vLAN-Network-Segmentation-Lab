@@ -80,7 +80,7 @@ At this point I sent pings through ICMP to verify connection and communication b
 \
 
 
-
+Once the network setup was verified with pings. I proceeded to the next step of adding Kali Linux VM to the environment. 
 
 
 
