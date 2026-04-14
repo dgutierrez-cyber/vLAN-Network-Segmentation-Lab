@@ -63,7 +63,7 @@ All virtual machines are connected to a shared host-only network (192.168.56.0/2
 
 
 
-At this point I sent pings through ICMP to verify connection and communication between devices, I recieved a return of 100% packet loss and quickly seen my mistake. In my rush I didnt finish inputting the IP Address correctly, once I noticed that I added the last number needed to complete the correct input needed. Once the IP Address was input correctly there was 0% packet loss.
+At this point I sent pings through ICMP to verify connection and communication between devices, I recieved a return of 100% packet loss and quickly seen my mistake. In my rush I didnt finish inputting the IP Address correctly, once the IP Address was input correctly there was 0% packet loss.
 
 <img width="788" height="503" alt="Human Error Ping (Victim - Client 2)" src="https://github.com/user-attachments/assets/b10ccd66-1757-4cf2-b931-f9f63c73cfed" />
 
@@ -80,8 +80,7 @@ At this point I sent pings through ICMP to verify connection and communication b
 \
 
 
-Once the network setup was verified with pings. I proceeded to the next step of adding Kali Linux VM to the environment. 
-
+Once the network setup was verified with successful pings. I proceeded to the next step of adding new virtual adapters for each segmented subnet
 
 
 
