@@ -80,7 +80,7 @@ At this point I sent pings through ICMP to verify connection and communication b
 \
 
 
-Once the network setup was verified with successful pings. I proceeded to the next step of adding new virtual adapters for each segmented subnet
+Once the network setup was verified with successful pings. I proceeded to the next step of adding a firewall in the form of a pfsense installed vm. To start this, I created 3 new network adapters (4 adapters total). Once the network adapters were ready I downloaded pfsense and booted up a new VM with it installed. I assigned the 
 
 
 
