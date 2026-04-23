@@ -80,13 +80,14 @@ At this point I sent pings through ICMP to verify connection and communication b
 \
 
 
-Once the network setup was verified with successful pings. I proceeded to the next step of adding a firewall in the form of a pfsense installed vm. To start this, I created 3 new network adapters (4 adapters total). 
+Once the network setup was verified with successful pings I proceeded to the next step of adding a firewall in the form of a pfsense installed vm. To start this, I created 3 new network adapters which would be used. 
 
 <img width="740" height="96" alt="network adapters configured" src="https://github.com/user-attachments/assets/bb283b3a-e955-42b7-8cf8-773f72ca9fed" />
 
-Once the network adapters were ready I downloaded pfsense and booted up a new VM with it installed. I assigned the 
+Once the network adapters were configured properly I downloaded a PFsense ISO file and mounted that on a new virtual machine labeled PFsense. 
 
 <img width="1332" height="186" alt="PFsense Download" src="https://github.com/user-attachments/assets/836b7386-9199-45d2-af8b-a53b92eb0454" />
+
 
 
 
