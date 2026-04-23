@@ -90,10 +90,10 @@ Once the network adapters were configured properly I downloaded a PFsense ISO fi
 <img width="1332" height="186" alt="PFsense Download" src="https://github.com/user-attachments/assets/836b7386-9199-45d2-af8b-a53b92eb0454" />
 
 At bootup I was tasked with assigning the interfaces.\
-WAN -> em0 (NAT) \
-LAN -> em1 (192.168.10) \
-OPT1 -> em2 (192.168.20) \
-OPT2 -> em3 (192.168.30) \
+WAN -> em0 (NAT/Internet) \
+LAN -> em1 (192.168.10 - Windows Server) \
+OPT1 -> em2 (192.168.20 - Ubuntu) \
+OPT2 -> em3 (192.168.30 - Kali) \
 
 <img width="864" height="449" alt="PFsense Assigned Interfaces" src="https://github.com/user-attachments/assets/f7aebe9e-17e3-4be9-8cb2-0b1dcf32e1ee" />
 
