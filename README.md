@@ -58,15 +58,20 @@ All virtual machines are connected to a shared host-only network (192.168.56.0/2
 
 <div align='center'>Network: 192.168.56.0/24 (Host-Only Adapter - vboxnet0)</div>
 
+
 ![Network Mapping](https://github.com/user-attachments/assets/ceddae41-13d6-439e-ae67-ff559f3c1927)
 
   
 
 
 
-At this point I sent pings through ICMP to verify connection and communication between devices, I recieved a return of 100% packet loss and quickly seen my mistake. In my rush I didnt finish inputting the IP Address correctly, once the IP Address was input correctly there was 0% packet loss.
+At this point I sent pings through ICMP to verify connection and communication between devices, I recieved a return of 100% packet loss and quickly seen my mistake. In my rush I didnt finish inputting the IP Address correctly.
 
 <img width="788" height="503" alt="Human Error Ping (Victim - Client 2)" src="https://github.com/user-attachments/assets/b10ccd66-1757-4cf2-b931-f9f63c73cfed" />
+
+
+Once the IP Address was input correctly there was 0% packet loss.\
+
 
 <img width="979" height="569" alt="Human Error Ping (Client 2 - Victim)" src="https://github.com/user-attachments/assets/ad5875f3-314a-472c-9916-82c1eec0c505" />
 
@@ -75,22 +80,22 @@ At this point I sent pings through ICMP to verify connection and communication b
 
 
 \
-\
-\
-\
-
 
 Once the network setup was verified with successful pings I proceeded to the next step of adding a firewall in the form of a pfsense installed vm. To start this, I created 3 new network adapters which would be used. 
 
 <img width="740" height="96" alt="network adapters configured" src="https://github.com/user-attachments/assets/bb283b3a-e955-42b7-8cf8-773f72ca9fed" />
 
-Once the network adapters were configured properly I downloaded a PFsense ISO file and mounted that on a new virtual machine labeled PFsense. 
+Once the network adapters were configured properly I downloaded a PFsense ISO file and mounted that on a new virtual machine labeled pfsense. 
 
 <img width="1332" height="186" alt="PFsense Download" src="https://github.com/user-attachments/assets/836b7386-9199-45d2-af8b-a53b92eb0454" />
 
+At bootup I was tasked with assigning the interfaces.\
+WAN -> em0 (NAT) \
+LAN -> em1 (192.168.10) \
+OPT1 -> em2 (192.168.20) \
+OPT2 -> em3 (192.168.30) \
 
-
-
+<img width="864" height="449" alt="PFsense Assigned Interfaces" src="https://github.com/user-attachments/assets/f7aebe9e-17e3-4be9-8cb2-0b1dcf32e1ee" />
 
 
 
