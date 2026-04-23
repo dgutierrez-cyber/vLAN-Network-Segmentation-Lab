@@ -89,7 +89,7 @@ Once the network adapters were configured properly I downloaded a PFsense ISO fi
 
 <img width="1332" height="186" alt="PFsense Download" src="https://github.com/user-attachments/assets/836b7386-9199-45d2-af8b-a53b92eb0454" />
 
-At bootup I was tasked with assigning the interfaces.\
+At bootup I was tasked with assigning the interfaces and setting their ip addresses.\
 WAN -> em0 (NAT/Internet) \
 LAN -> em1 (192.168.10 - Windows Server) \
 OPT1 -> em2 (192.168.20 - Ubuntu) \
@@ -97,10 +97,32 @@ OPT2 -> em3 (192.168.30 - Kali) \
 
 <img width="864" height="449" alt="PFsense Assigned Interfaces" src="https://github.com/user-attachments/assets/f7aebe9e-17e3-4be9-8cb2-0b1dcf32e1ee" />
 
+Now the other Virtual Machines have to use pfsense as their gateway.
+To ensure this I must update each VM to their correct gateway. 
+
+For the Ubuntu machines this can be achieved in the bash cli with this input/
+
+<div align="center">
+nmcli connection modify "Wired connection 1" ipv4.gateway 192.168.20.1
+nmcli connection down "Wired connection 1"
+nmcli connection up "Wired connection 1"
+</div>
+
+For the Kali Linux VM this input in bash works 
+<div align="center">
+sudo nmcli connection modify "Wired connection 1" ipv4.gateway 192.168.30.1
+sudo nmcli connection down "Wired connection 1"
+sudo nmcli connection up "Wired connection 1"
+</div>
+
+To test the connectivity I sent a ping from...
+Ubuntu -> Windows Server
+ping 192.168.10.10
 
 
+and from Kali -> Ubuntu
+ping 192.168.20.10
 
 
-
-
+Both return with a successful return and no packet loss. 
 ---
